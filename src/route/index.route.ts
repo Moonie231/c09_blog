@@ -1,6 +1,6 @@
 
 import authRoutes from "./auth.route";
-// import userRoutes from "./user.route";
+import userRoutes from "./user.route";
 import {checkAuth}  from "../midlleware/auth";
 import { checkPermission } from "../midlleware/permission";
 
@@ -12,7 +12,7 @@ function route(app) {
 
     app.use(checkAuth);
 
-    // app.use("/user", userRoutes);
+    app.use("/user", userRoutes);
 
     app.use(checkPermission);
 

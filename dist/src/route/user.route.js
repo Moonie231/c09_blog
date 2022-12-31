@@ -3,8 +3,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const user_controller_1 = require("../controller/user.controller");
 const express_1 = require("express");
-const admin_controller_1 = require("../controller/admin.controller");
 const multer_1 = __importDefault(require("multer"));
 const storage = multer_1.default.diskStorage({
     destination: function (req, file, cb) {
@@ -15,13 +15,10 @@ const storage = multer_1.default.diskStorage({
     }
 });
 const upload = (0, multer_1.default)({ storage: storage });
-const adminRoutes = (0, express_1.Router)();
-adminRoutes.get("/home", admin_controller_1.AdminController.showAdminPage);
-adminRoutes.get("/add-product", admin_controller_1.AdminController.showAddPage);
-adminRoutes.post("/add-product", upload.single('image'), admin_controller_1.AdminController.addProduct);
-adminRoutes.get('/list-product', admin_controller_1.AdminController.showList);
-adminRoutes.get('/update-product/:id', admin_controller_1.AdminController.showFormUpdate);
-adminRoutes.post('/update-product/:id', upload.single('image'), admin_controller_1.AdminController.updateProduct);
-adminRoutes.get('/delete-product/:id', admin_controller_1.AdminController.deleteProduct);
-exports.default = adminRoutes;
+const userRoutes = (0, express_1.Router)();
+userRoutes.get('/home', user_controller_1.UserController.getHome);
+userRoutes.get('/add-blog', user_controller_1.UserController.addBlogPage);
+userRoutes.post('/add-blog', upload.single('image'), user_controller_1.UserController.addBlog);
+userRoutes.get('/blog/:id', user_controller_1.UserController.getBlog);
+exports.default = userRoutes;
 //# sourceMappingURL=user.route.js.map

@@ -9,6 +9,6 @@ adminRoutes.get('/list-user', AdminController.showListUserPage)
 adminRoutes.get('/delete-user/:id', AdminController.deleteUser)
 adminRoutes.get('/search-user', AdminController.searchUser)
 
-adminRoutes.post('/list-blog', AdminController.showListBlog)
+adminRoutes.get('/list-blog', AdminController.showListBlog)
 
 export default adminRoutes;

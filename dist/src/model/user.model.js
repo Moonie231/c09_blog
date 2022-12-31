@@ -31,7 +31,7 @@ const userSchema = new Schema({
     },
     avatar: {
         type: String,
-        default: "/default.jpg"
+        default: "/image/default.jpg"
     },
     blog: {
         type: Schema.Types.ObjectId,

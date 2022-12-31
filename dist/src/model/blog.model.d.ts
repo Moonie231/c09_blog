@@ -24,15 +24,17 @@
 /// <reference types="mongoose/types/inferschematype" />
 import { Schema } from "mongoose";
 export declare const Blog: import("mongoose").Model<{
+    date: Date;
     status: "public" | "private";
-    user?: import("mongoose").Types.ObjectId;
+    image: string;
     title?: string;
-    dateCreated?: Date;
     content?: string;
+    user?: import("mongoose").Types.ObjectId;
 }, {}, {}, {}, Schema<any, import("mongoose").Model<any, any, any, any, any>, {}, {}, {}, {}, import("mongoose").DefaultSchemaOptions, {
+    date: Date;
     status: "public" | "private";
-    user?: import("mongoose").Types.ObjectId;
+    image: string;
     title?: string;
-    dateCreated?: Date;
     content?: string;
+    user?: import("mongoose").Types.ObjectId;
 }>>;

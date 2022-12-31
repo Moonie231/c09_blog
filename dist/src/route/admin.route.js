@@ -7,6 +7,6 @@ adminRoutes.get('/home', admin_controller_1.AdminController.showHomePage);
 adminRoutes.get('/list-user', admin_controller_1.AdminController.showListUserPage);
 adminRoutes.get('/delete-user/:id', admin_controller_1.AdminController.deleteUser);
 adminRoutes.get('/search-user', admin_controller_1.AdminController.searchUser);
-adminRoutes.post('/list-blog', admin_controller_1.AdminController.showListBlog);
+adminRoutes.get('/list-blog', admin_controller_1.AdminController.showListBlog);
 exports.default = adminRoutes;
 //# sourceMappingURL=admin.route.js.map

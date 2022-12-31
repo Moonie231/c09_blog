@@ -1,2 +1,2 @@
-declare const adminRoutes: import("express-serve-static-core").Router;
-export default adminRoutes;
+declare const userRoutes: import("express-serve-static-core").Router;
+export default userRoutes;
