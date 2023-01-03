@@ -17,16 +17,38 @@ export class AdminController{
         res.redirect('/admin/list-user')
     }
 
+    static async lockUser (req,res) {
+        let id = req.params.id
+        await User.findOneAndUpdate({_id: id},
+            { $set:
+                    {status: 'locked'}
+            })
+        res.redirect('/admin/list-user')
+    }
+
     static async searchUser (req,res) {
         let user = await User.find({
-            name: {$regex: req.query.keyword
-            }
+            name: {$regex: req.query.keyword}
         })
         res.status(200).json(user);
     }
 
     static async showListBlog (req,res) {
-        let blog = await Blog.find()
+        let blog = await Blog.find().populate('user')
+
         res.render('admin/listBlog', {blog: blog})
+    }
+
+    static async deleteBlog (req,res) {
+        let id = req.params.id
+        await Blog.findOneAndDelete({_id: id})
+        res.redirect('/admin/list-blog')
+    }
+
+    static async searchBlog (req,res) {
+        let blog = await Blog.find({
+            title: {$regex: req.query.keyword}
+        }).populate('user')
+        res.status(200).json(blog);
     }
 }

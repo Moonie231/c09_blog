@@ -20,5 +20,13 @@ userRoutes.get('/home', user_controller_1.UserController.getHome);
 userRoutes.get('/add-blog', user_controller_1.UserController.addBlogPage);
 userRoutes.post('/add-blog', upload.single('image'), user_controller_1.UserController.addBlog);
 userRoutes.get('/blog/:id', user_controller_1.UserController.getBlog);
+userRoutes.get('/my-blog', user_controller_1.UserController.myBlog);
+userRoutes.get('/search-blog', user_controller_1.UserController.searchBlog1);
+userRoutes.get('/delete-blog/:id', user_controller_1.UserController.deleteBlog);
+userRoutes.get('/update-blog/:id', user_controller_1.UserController.updateBlogPage);
+userRoutes.post('/update-blog/:id', upload.single('image'), user_controller_1.UserController.updateBlog);
+userRoutes.get('/info', user_controller_1.UserController.getInfo);
+userRoutes.get('/edit-user/:id', user_controller_1.UserController.editUserPage);
+userRoutes.post('/edit-user/:id', upload.single('avatar'), user_controller_1.UserController.editUser);
 exports.default = userRoutes;
 //# sourceMappingURL=user.route.js.map

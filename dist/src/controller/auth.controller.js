@@ -41,7 +41,6 @@ class AuthController {
     static async login(req, res) {
         try {
             const user = await user_model_1.User.findOne({ email: req.body.email });
-            console.log(user);
             if (user) {
                 const comparePass = await bcrypt_1.default.compare(req.body.password, user.password);
                 console.log(comparePass);

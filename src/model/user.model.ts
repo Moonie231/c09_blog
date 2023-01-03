@@ -17,6 +17,10 @@ const userSchema = new Schema({
         required: [true, "Password can't be blank"]
     },
 
+    address: String,
+
+    phone: String,
+
     status: {
         type: String,
         default: 'active',
@@ -34,11 +38,12 @@ const userSchema = new Schema({
         default: "/image/default.jpg"
     },
 
-    blog: {
-        type: Schema.Types.ObjectId,
-        ref: "Blog",
-    },
-
+    blog: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Blog"
+        }
+    ],
 
 })
 

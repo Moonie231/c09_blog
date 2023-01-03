@@ -9,10 +9,18 @@
                 <a class="nav-link" href="/user/add-blog">Add Blog</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/auth/logout">Log Out</a>
+            <li class="nav-item dropdown open" style="padding-left: 15px;">
+                <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown"
+                   data-toggle="dropdown" aria-expanded="false">
+                    <img src="/image/avatar/<%=user.avatar%>" alt="">
+                    <%=user.name%>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="/user/info">Info</a>
+                    <a class="dropdown-item" href="/user/my-blog">My Blog</a>
+                    <a class="dropdown-item" href="/auth/logout">Log Out</a>
+                </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#">Disabled</a>
             </li>
         </ul>
     </div>

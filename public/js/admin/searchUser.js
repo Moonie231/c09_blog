@@ -15,9 +15,9 @@ const searchUser = (value) => {
             html += `<td>${user.email}</td>`;
             html += `<td>${user.status}</td>`;
             html += `<td>`
-            html +=`<a onclick="return confirm('Are you sure you want to delete this user?')" href="/admin/delete-product/${user._id}/" class="btn btn-danger">Delete</a></td>`;
+            html +=`<a onclick="return confirm('Are you sure you want to delete this user?')" href="/admin/delete-user/${user._id}/" class="btn btn-danger">Delete</a></td>`;
             if (user.status === 'active') {
-                html +=`<a onclick="return confirm('Are you sure you want to lock this user?')" href="#" class="btn btn-danger">Lock</a></td>`;
+                html +=`<a onclick="return confirm('Are you sure you want to lock this user?')" href="/admin/lock/${user._id}" class="btn btn-danger">Lock</a></td>`;
             }
             html += '</tr>';
         })

@@ -38,7 +38,7 @@ export class AuthController {
     static async login(req, res) {
         try {
             const user = await User.findOne({ email: req.body.email });
-            console.log(user)
+
             if (user) {
                 const comparePass = await bcrypt.compare(req.body.password, user.password);
                 console.log(comparePass)

@@ -19,6 +19,8 @@ const userSchema = new Schema({
         type: String,
         required: [true, "Password can't be blank"]
     },
+    address: String,
+    phone: String,
     status: {
         type: String,
         default: 'active',
@@ -33,10 +35,12 @@ const userSchema = new Schema({
         type: String,
         default: "/image/default.jpg"
     },
-    blog: {
-        type: Schema.Types.ObjectId,
-        ref: "Blog",
-    },
+    blog: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Blog"
+        }
+    ],
 });
 const User = model('User', userSchema);
 exports.User = User;

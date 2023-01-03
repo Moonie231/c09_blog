@@ -6,7 +6,10 @@ const adminRoutes = (0, express_1.Router)();
 adminRoutes.get('/home', admin_controller_1.AdminController.showHomePage);
 adminRoutes.get('/list-user', admin_controller_1.AdminController.showListUserPage);
 adminRoutes.get('/delete-user/:id', admin_controller_1.AdminController.deleteUser);
+adminRoutes.get('/lock/:id', admin_controller_1.AdminController.lockUser);
 adminRoutes.get('/search-user', admin_controller_1.AdminController.searchUser);
 adminRoutes.get('/list-blog', admin_controller_1.AdminController.showListBlog);
+adminRoutes.get('/delete-blog/:id', admin_controller_1.AdminController.deleteBlog);
+adminRoutes.get('/search-blog', admin_controller_1.AdminController.searchBlog);
 exports.default = adminRoutes;
 //# sourceMappingURL=admin.route.js.map

@@ -6,7 +6,9 @@ declare const User: mongoose.Model<{
     status: "active" | "locked";
     role: "user" | "admin";
     avatar: string;
-    blog?: mongoose.Types.ObjectId;
+    blog: mongoose.Types.ObjectId[];
+    address?: string;
+    phone?: string;
 }, {}, {}, {}, mongoose.Schema<any, mongoose.Model<any, any, any, any, any>, {}, {}, {}, {}, mongoose.DefaultSchemaOptions, {
     name: string;
     email: string;
@@ -14,6 +16,8 @@ declare const User: mongoose.Model<{
     status: "active" | "locked";
     role: "user" | "admin";
     avatar: string;
-    blog?: mongoose.Types.ObjectId;
+    blog: mongoose.Types.ObjectId[];
+    address?: string;
+    phone?: string;
 }>>;
 export { User };

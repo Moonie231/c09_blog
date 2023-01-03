@@ -7,8 +7,11 @@ adminRoutes.get('/home', AdminController.showHomePage)
 
 adminRoutes.get('/list-user', AdminController.showListUserPage)
 adminRoutes.get('/delete-user/:id', AdminController.deleteUser)
+adminRoutes.get('/lock/:id', AdminController.lockUser)
 adminRoutes.get('/search-user', AdminController.searchUser)
 
 adminRoutes.get('/list-blog', AdminController.showListBlog)
+adminRoutes.get('/delete-blog/:id', AdminController.deleteBlog)
+adminRoutes.get('/search-blog', AdminController.searchBlog)
 
 export default adminRoutes;
