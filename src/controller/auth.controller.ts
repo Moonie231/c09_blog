@@ -5,11 +5,13 @@ import bcrypt from 'bcrypt';
 
 export class AuthController {
     static async showFormLogin(req, res) {
-        res.render('login');
+        let error = req.flash().error || [];
+        res.render('login', { error: error});
     }
 
     static async showFormRegister(req, res) {
-        res.render('register');
+        let error = req.flash().error || [];
+        res.render('register', { error: error});
     }
 
     static async register(req, res) {
@@ -43,8 +45,8 @@ export class AuthController {
                 const comparePass = await bcrypt.compare(req.body.password, user.password);
                 console.log(comparePass)
                 if (!comparePass) {
-                    req.flash("error", "Sai mật khẩu!!!");
-                    return res.redirect("/auth/login");
+                    req.flash("error", "Wrong password!!!");
+                     return res.redirect("/auth/login");
                 }
                 let payload = {
                     user_id: user["id"],
@@ -68,7 +70,7 @@ export class AuthController {
                     res.redirect("/user/home");
                 }
             } else {
-                req.flash("error", "Sai tài khoản hoặc mật khẩu");
+                req.flash("error", "Wrong account or password");
                 res.redirect("/auth/login");
             }
         } catch (err) {

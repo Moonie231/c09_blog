@@ -8,7 +8,7 @@ const express_1 = require("express");
 const multer_1 = __importDefault(require("multer"));
 const storage = multer_1.default.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, __dirname + '../../../../public/image/upload');
+        cb(null, __dirname + '../../../../public/image/avatar');
     },
     filename: function (req, file, cb) {
         cb(null, file.originalname);

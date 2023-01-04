@@ -28,7 +28,7 @@
         <tr>
             <th scope="row"><%= index + 1%></th>
             <td class="w-20"><%= (item.user)? item.user.name: "none"%></td>
-            <td class="w-20"><%= item.date%></td>
+            <td class="w-20"><%= item.date.toLocaleTimeString()%></td>
             <td type="password"><%= item.title%></td>
             <td type="password"><%= item.status%></td>
             <td>

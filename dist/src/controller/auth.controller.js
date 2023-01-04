@@ -9,10 +9,12 @@ const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const bcrypt_1 = __importDefault(require("bcrypt"));
 class AuthController {
     static async showFormLogin(req, res) {
-        res.render('login');
+        let error = req.flash().error || [];
+        res.render('login', { error: error });
     }
     static async showFormRegister(req, res) {
-        res.render('register');
+        let error = req.flash().error || [];
+        res.render('register', { error: error });
     }
     static async register(req, res) {
         try {
@@ -45,7 +47,7 @@ class AuthController {
                 const comparePass = await bcrypt_1.default.compare(req.body.password, user.password);
                 console.log(comparePass);
                 if (!comparePass) {
-                    req.flash("error", "Sai mật khẩu!!!");
+                    req.flash("error", "Wrong password!!!");
                     return res.redirect("/auth/login");
                 }
                 let payload = {
@@ -70,7 +72,7 @@ class AuthController {
                 }
             }
             else {
-                req.flash("error", "Sai tài khoản hoặc mật khẩu");
+                req.flash("error", "Wrong account or password");
                 res.redirect("/auth/login");
             }
         }

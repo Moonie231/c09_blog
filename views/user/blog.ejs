@@ -9,7 +9,7 @@
 <%- include ('../navigationBar/navbarUser')%>
     <p>Title: <%= blog.title %></p>
     <p>Content:<%= blog.content%></p>
-    <p>Date:<%= blog.date%></p>
+    <p>Date:<%= blog.date.toLocaleTimeString()%></p>
     <p>Image:<img src="/image/upload/<%= blog.image%>"></p>
 
 

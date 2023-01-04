@@ -47,7 +47,8 @@ class UserController {
             $set: {
                 name: req.body.name,
                 address: req.body.address,
-                phone: req.body.phone
+                phone: req.body.phone,
+                avatar: req.file.originalname
             }
         });
         res.redirect('/user/info');
