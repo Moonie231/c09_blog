@@ -28,7 +28,7 @@ class AuthController {
                     password: passwordHash,
                     phoneNumber: req.body.phone
                 };
-                const newUser = await user_model_1.User.create(userData);
+                await user_model_1.User.create(userData);
                 res.redirect("/auth/login");
             }
             else {

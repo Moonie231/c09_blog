@@ -75,10 +75,8 @@ export class UserController{
     static async deleteBlog (req,res) {
         try {
             let id = req.params.id
-            console.log(id)
-            let user = await User.findById({_id :req.decoded.user_id})
             await Blog.findOneAndDelete({_id: id})
-            res.redirect('/user/my-blog', {user: user})
+            res.redirect('/user/my-blog')
         }catch (e) {
             console.log(e.message)
         }

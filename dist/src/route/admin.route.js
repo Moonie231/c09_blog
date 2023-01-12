@@ -11,5 +11,7 @@ adminRoutes.get('/search-user', admin_controller_1.AdminController.searchUser);
 adminRoutes.get('/list-blog', admin_controller_1.AdminController.showListBlog);
 adminRoutes.get('/delete-blog/:id', admin_controller_1.AdminController.deleteBlog);
 adminRoutes.get('/search-blog', admin_controller_1.AdminController.searchBlog);
+adminRoutes.get('/add-admin', admin_controller_1.AdminController.addAdminPage);
+adminRoutes.post('/add-admin', admin_controller_1.AdminController.addAdmin);
 exports.default = adminRoutes;
 //# sourceMappingURL=admin.route.js.map

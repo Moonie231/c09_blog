@@ -33,7 +33,7 @@ const userSchema = new Schema({
     },
     avatar: {
         type: String,
-        default: "/image/avatar/default.jpg"
+        default: "/image/default.jpg"
     },
     blog: [
         {

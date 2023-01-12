@@ -26,7 +26,7 @@ export class AuthController {
                     password: passwordHash,
                     phoneNumber: req.body.phone
                 }
-                const newUser = await User.create(userData);
+                await User.create(userData);
                 res.redirect("/auth/login");
             } else {
                 req.flash("error", "User already exists");

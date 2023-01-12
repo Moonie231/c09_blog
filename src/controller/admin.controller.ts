@@ -1,5 +1,6 @@
 import {User} from "../model/user.model";
 import {Blog} from "../model/blog.model";
+import bcrypt from 'bcrypt';
 
 export class AdminController{
     static showHomePage(req, res) {
@@ -44,7 +45,6 @@ export class AdminController{
 
     static async showListBlog (req,res) {
         let blog = await Blog.find().populate('user')
-
         res.render('admin/listBlog', {blog: blog})
     }
 
@@ -59,5 +59,38 @@ export class AdminController{
             title: {$regex: req.query.keyword}
         }).populate('user')
         res.status(200).json(blog);
+    }
+
+    static async addAdminPage (req,res) {
+        let error = req.flash().error || [];
+        res.render('admin/addAdmin', {error: error})
+    }
+
+    static async addAdmin (req,res) {
+        try {
+            const user = await User.findOne({ email: req.body.email });
+            if (!user) {
+                const passwordHash = await bcrypt.hash(req.body.password, 10);
+                let userData = {
+                    name: req.body.name,
+                    email: req.body.email,
+                    role: 'admin',
+                    password: passwordHash,
+                    phoneNumber: req.body.phone
+                }
+                await User.create(userData);
+                res.redirect("/auth/login");
+            } else {
+                if (user.password === req.body.password) {
+                    await User.updateOne({_id: user._id}, {$set: {role: 'admin'}})
+                    res.redirect("/auth/login");
+                }else {
+                    req.flash('error', 'Wrong password')
+                    res.redirect('/admin/add-admin')
+                }
+            }
+        } catch (err) {
+            console.log(err.message);
+        }
     }
 }
