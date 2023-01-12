@@ -18,9 +18,17 @@ class AdminController {
     }
     static async lockUser(req, res) {
         let id = req.params.id;
-        await user_model_1.User.findOneAndUpdate({ _id: id }, { $set: { status: 'locked' }
-        });
-        res.redirect('/admin/list-user');
+        let user = await user_model_1.User.findOne({ _id: id });
+        if (user.status === 'active') {
+            await user_model_1.User.updateOne({ _id: id }, { $set: { status: 'locked' }
+            });
+            res.redirect('/admin/list-user');
+        }
+        else {
+            await user_model_1.User.updateOne({ _id: id }, { $set: { status: 'active' }
+            });
+            res.redirect('/admin/list-user');
+        }
     }
     static async searchUser(req, res) {
         let user = await user_model_1.User.find({

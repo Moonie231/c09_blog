@@ -9,8 +9,8 @@ authRoutes.post("/login", AuthController.login);
 authRoutes.get("/register", AuthController.showFormRegister);
 authRoutes.post("/register", AuthController.register);
 
-authRoutes.get('/changepassword', AuthController.changePasswordPage);
-authRoutes.post('/changepassword',AuthController.changePassword);
+authRoutes.get('/change-password', AuthController.changePasswordPage);
+authRoutes.post('/change-password',AuthController.changePassword);
 
 authRoutes.get('/logout', AuthController.logout);
 

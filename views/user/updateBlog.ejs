@@ -20,7 +20,8 @@
         </div>
         <div class="form-group">
             <label for="exampleFormControlFile1">Image</label>
-            <input type="file" class="form-control-file" id="exampleFormControlFile1" name="image">
+            <img src="/image/<%= blog.image%>">
+            <input type="file" class="form-control-file" id="exampleFormControlFile1" name="image" value="<%= blog.image%>">
         </div>
         <div class="form-group">
             <select class="form-control form-control-sm" name="status" value="<%= blog.status%>">

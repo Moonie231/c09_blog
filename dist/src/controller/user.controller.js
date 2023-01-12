@@ -15,7 +15,6 @@ class UserController {
     }
     static async addBlog(req, res) {
         let user = await user_model_1.User.findById({ _id: req.decoded.user_id });
-        console.log(user);
         let blog = new blog_model_1.Blog({
             title: req.body.title,
             content: req.body.content,
@@ -66,10 +65,16 @@ class UserController {
         res.status(200).json(blog);
     }
     static async deleteBlog(req, res) {
-        let id = req.params.id;
-        let user = await user_model_1.User.findById({ _id: req.decoded.user_id });
-        await blog_model_1.Blog.findOneAndDelete({ _id: id });
-        res.redirect('/user/my-blog', { user: user });
+        try {
+            let id = req.params.id;
+            console.log(id);
+            let user = await user_model_1.User.findById({ _id: req.decoded.user_id });
+            await blog_model_1.Blog.findOneAndDelete({ _id: id });
+            res.redirect('/user/my-blog', { user: user });
+        }
+        catch (e) {
+            console.log(e.message);
+        }
     }
     static async updateBlogPage(req, res) {
         let id = req.params.id;

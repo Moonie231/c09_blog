@@ -10,8 +10,6 @@
 <body>
 <%- include ('../navigationBar/navbarUser') %>
 <div class="col-12">
-    <span style="margin-left: 30px">Find blog:</span>
-    <input type="text" class="d-inline-block" style="margin-left: 20px" onkeyup="searchBlog1(this.value)">
     <table class="table table-image">
         <thead>
         <tr>
@@ -35,7 +33,7 @@
                     </a></td>
                 <td class="w-20"><a href="/user/blog/<%= item._id %>"><%= item.title %> </a></td>
                 <td class="w-20">
-                    <a href="/user/blog/<%= item._id %>"><img src="/image/upload/<%= item.image %>" alt="" width="50px" height="50px"></a></td>
+                    <a href="/user/blog/<%= item._id %>"><img src="/image/<%= item.image %>" alt="" width="50px" height="50px"></a></td>
                 <td class="w-20"><a href="/user/blog/<%= item._id %>"><%= item.status %></a></td>
                 <td>
                     <a href="/user/update-blog/<%= item._id %>" class="btn btn-primary">Update</a>

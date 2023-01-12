@@ -64,7 +64,11 @@ class AuthController {
                     httpOnly: true,
                 };
                 res.cookie('token', token, options);
-                if (user.role === "admin") {
+                if (user.status === 'locked') {
+                    req.flash("error", "Your account has been locked");
+                    return res.redirect("/auth/login");
+                }
+                else if (user.role === "admin") {
                     res.redirect("/admin/home");
                 }
                 else {
@@ -89,25 +93,25 @@ class AuthController {
         try {
             const user = await user_model_1.User.findOne({ email: req.body.email });
             if (user) {
-                const comparePass = await bcrypt_1.default.compare(req.body.password2, user.password);
+                const comparePass = await bcrypt_1.default.compare(req.body.password, user.password);
                 if (!comparePass) {
                     req.flash("error", "Sai Mật khẩu!!!");
-                    res.redirect("/auth/changepassword");
+                    res.redirect("/auth/change-password");
                 }
                 else {
                     const passwordHash = await bcrypt_1.default.hash(req.body.passwordChange, 10);
                     await user_model_1.User.updateOne({ _id: user._id }, { password: passwordHash });
-                    res.redirect("/auth/login");
+                    res.redirect("/auth/logout");
                 }
             }
             else {
                 req.flash("error", "Không tìm thấy user");
-                res.redirect("/auth/changepassword");
+                res.redirect("/auth/change-password");
             }
         }
         catch (e) {
             console.log(e.message);
-            res.redirect("/auth/changepassword");
+            res.redirect("/auth/change-password");
         }
     }
     static async logout(req, res) {

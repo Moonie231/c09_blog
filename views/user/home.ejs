@@ -13,7 +13,7 @@
         <div class="d-flex align-items-stretch col-3">
             <div class="card" style="width: 18rem;">
                 <% if (item.image){ %>
-                    <img class="card-img-top" src="/image/upload/<%= item.image %>" alt="Card image cap">
+                    <img class="card-img-top" src="/image/<%= item.image %>" alt="Card image cap">
                 <% } %>
                 <div class="card-body">
                     <a href="/user/blog/<%= item._id %>"><h5 class="card-title"><%= item.title %></h5></a>

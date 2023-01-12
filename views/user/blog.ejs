@@ -7,10 +7,57 @@
 </head>
 <body>
 <%- include ('../navigationBar/navbarUser')%>
-    <p>Title: <%= blog.title %></p>
-    <p>Content:<%= blog.content%></p>
-    <p>Date:<%= blog.date.toLocaleTimeString()%></p>
-    <p>Image:<img src="/image/upload/<%= blog.image%>"></p>
+<div class="main-product-thumbnail ptb-100 ptb-sm-60">
+    <div class="container">
+        <div class="thumb-bg">
+            <div class="row">
+                <!-- Main Thumbnail Image Start -->
+                <div class="col-lg-5 mb-all-40">
+                    <!-- Thumbnail Large Image start -->
+                    <div class="tab-content">
+                        <div id="thumb1" class="tab-pane fade show active">
+                            <a data-fancybox="images" href="/image/<%=blog.image%>"><img class="img-thumbnail"
+                                        src="/image/<%=blog.image%>" alt="product-view"></a>
+                        </div>
+
+                    </div>
+                    <!-- Thumbnail Large Image End -->
+                </div>
+                <!-- Main Thumbnail Image End -->
+                <!-- Thumbnail Description Start -->
+                <div class="col-lg-7">
+                    <div class="thubnail-desc fix">
+                        <h3 class="product-header">
+                            <%= blog.title%>
+                        </h3>
+                        <div class="rating-summary fix mtb-10">
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-o"></i>
+                            </div>
+                        </div>
+                        <div class="pro-price mtb-30">
+                            <p class="d-flex align-items-center"><span class="prev-price"></span><span
+                                        class="price"><%= blog.content%></span></p>
+                        </div>
+                        <div class="pro-price mtb-30">
+                            <p class="d-flex align-items-center"><span class="prev-price"></span><span
+                                        class="price"><%= blog.date.toLocaleTimeString()%></span></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Thumbnail Description End -->
+
+            </div>
+            <!-- Row End -->
+        </div>
+    </div>
+    <!-- Container End -->
+</div>
+</div>
 
 
 </body>

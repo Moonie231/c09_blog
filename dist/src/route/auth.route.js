@@ -7,8 +7,8 @@ authRoutes.get("/login", auth_controller_1.AuthController.showFormLogin);
 authRoutes.post("/login", auth_controller_1.AuthController.login);
 authRoutes.get("/register", auth_controller_1.AuthController.showFormRegister);
 authRoutes.post("/register", auth_controller_1.AuthController.register);
-authRoutes.get('/changepassword', auth_controller_1.AuthController.changePasswordPage);
-authRoutes.post('/changepassword', auth_controller_1.AuthController.changePassword);
+authRoutes.get('/change-password', auth_controller_1.AuthController.changePasswordPage);
+authRoutes.post('/change-password', auth_controller_1.AuthController.changePassword);
 authRoutes.get('/logout', auth_controller_1.AuthController.logout);
 exports.default = authRoutes;
 //# sourceMappingURL=auth.route.js.map

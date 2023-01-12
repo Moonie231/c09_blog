@@ -64,15 +64,21 @@ export class AuthController {
                     httpOnly: true, // The cookie only accessible by the web server
                 }
                 res.cookie('token', token, options)
-                if (user.role === "admin") {
+
+                if (user.status === 'locked') {
+                     req.flash("error", "Your account has been locked")
+                    return res.redirect("/auth/login");
+                }else if (user.role === "admin") {
                     res.redirect("/admin/home");
                 } else {
                     res.redirect("/user/home");
                 }
+
             } else {
                 req.flash("error", "Wrong account or password");
                 res.redirect("/auth/login");
             }
+
         } catch (err) {
             console.log(err);
             res.redirect("/auth/login");
@@ -88,28 +94,23 @@ export class AuthController {
         try {
             const user = await User.findOne({ email: req.body.email });
             if (user) {
-                const comparePass = await bcrypt.compare(req.body.password2, user.password);
+                const comparePass = await bcrypt.compare(req.body.password, user.password);
                 if (!comparePass) {
-
                     req.flash("error", "Sai Mật khẩu!!!");
-                    res.redirect("/auth/changepassword");
+                    res.redirect("/auth/change-password");
                 } else {
                     const passwordHash = await bcrypt.hash(req.body.passwordChange, 10);
-
-
                     await User.updateOne({ _id: user._id },{password: passwordHash});
-
-                    res.redirect("/auth/login");
+                    res.redirect("/auth/logout");
                 }
             } else {
                 req.flash("error", "Không tìm thấy user");
-                res.redirect("/auth/changepassword");
+                res.redirect("/auth/change-password");
             }
         } catch (e) {
             console.log(e.message);
-            res.redirect("/auth/changepassword");
+            res.redirect("/auth/change-password");
         }
-
     }
 
     static async logout(req, res){

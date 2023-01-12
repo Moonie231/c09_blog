@@ -15,7 +15,7 @@ export class UserController{
 
     static async addBlog(req,res){
     let user = await User.findById({_id :req.decoded.user_id})
-        console.log(user)
+
         let blog = new Blog({
             title : req.body.title,
             content : req.body.content,
@@ -73,10 +73,15 @@ export class UserController{
     }
 
     static async deleteBlog (req,res) {
-        let id = req.params.id
-        let user = await User.findById({_id :req.decoded.user_id})
-        await Blog.findOneAndDelete({_id: id})
-        res.redirect('/user/my-blog', {user: user})
+        try {
+            let id = req.params.id
+            console.log(id)
+            let user = await User.findById({_id :req.decoded.user_id})
+            await Blog.findOneAndDelete({_id: id})
+            res.redirect('/user/my-blog', {user: user})
+        }catch (e) {
+            console.log(e.message)
+        }
     }
 
     static async updateBlogPage (req, res) {
